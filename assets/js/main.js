@@ -8,7 +8,8 @@ const equals = document.getElementById('equals');
 let numerovisualizzato= '';
 let operator;
 let firstNumber;
-
+let secondNumber;
+let resultNumber;
 
 // FUNZIONAMENTO TASTI
 
@@ -84,7 +85,37 @@ for(let i=0; i<operators.length; i++){
     
 }
 
+// uguale
+equals.addEventListener('click', function(){
+    secondNumber = parseInt(numerovisualizzato);
+    switch(operator){
+        case '+': 
+            resultNumber = firstNumber + secondNumber;
+            break;
+        case '-': 
+            resultNumber = firstNumber - secondNumber;
+            break;
+        case '×': 
+            resultNumber = firstNumber * secondNumber;            
+            break;
+        case '÷': 
+            resultNumber = firstNumber / secondNumber;            
+            break;
+        case undefined:
+            resultNumber = 'ERR';
+    }
+    schermo.innerText= resultNumber;
+    // console.log(resultNumber);
+})
 
+// reset
+reset.addEventListener('click', function(){
+    firstNumber = 0;
+    secondNumber = 0;
+    resultNumber = 0;
+    numerovisualizzato='';
+    schermo.innerText = '0';
+})
 
 
 
