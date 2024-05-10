@@ -6,9 +6,13 @@ const schermo = document.getElementById('result');
 const reset = document.getElementById('clear');
 const equals = document.getElementById('equals');
 let numerovisualizzato= '';
+let operator;
+let firstNumber;
+
 
 // FUNZIONAMENTO TASTI
 
+//numeri
 for(let i=0; i<numbers.length; i++){
     numbers[i].addEventListener('click', function(){
         verificaNumero(numbers[i].textContent);
@@ -49,6 +53,38 @@ for(let i=0; i<numbers.length; i++){
     })
 }
 
+// operatori
+for(let i=0; i<operators.length; i++){
+        operators[i].addEventListener('click', function(){
+            if(numerovisualizzato !== ''){
+                firstNumber = parseInt(numerovisualizzato);
+                numerovisualizzato = '';
+                schermo.innerText = '';
+                verificaOperazione(operators[i].textContent);
+                // switch(operators[i].textContent){
+                //     case '+': 
+                //         operator = '+';
+                //         break;
+                //     case '-': 
+                //         operator = '-';
+                //         break;
+                //     case '×': 
+                //         operator = '×';
+                //         break;
+                //     case '÷': 
+                //         operator = '÷';
+                //         break;
+                
+                // }
+            schermo.innerText= operator;
+        }else{
+            schermo.innerText='ERR';
+        }
+        })
+    
+}
+
+
 
 
 
@@ -88,6 +124,25 @@ function verificaNumero(numero){
                 break;
             
         }
+}
+
+
+function verificaOperazione(operazione){
+    switch(operazione){
+        case '+': 
+            operator = '+';
+            break;
+        case '-': 
+            operator = '-';
+            break;
+        case '×': 
+            operator = '×';
+            break;
+        case '÷': 
+            operator = '÷';
+            break;
+        
+    }
 }
 
 
